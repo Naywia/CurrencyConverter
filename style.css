@@ -2,3 +2,79 @@
     Created on : 27 Jul 2020, 10:43:08
     Author     : Naywia
 */
+body, html{
+    height: 100%;
+    margin: 0px;
+}
+.header{
+    display: flex;
+    justify-content: flex-end;
+    height: 10%;
+    background-color: #f08080; /*Light coral.. description: soft red..*/
+
+}
+.innerHeader{
+    padding: 0px 10px 0px 0px;
+}
+.head{
+    display: flex;
+    font-size: 75px;
+    color: #fff;
+
+}
+
+.main{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+    background-color: #f5c0ae; /*Very soft orange.*/
+}
+.button{
+    display: flex;
+    justify-content: center;
+}
+#butt{
+    width: 100%;
+    height: 35px;
+    margin: 0px 0px 0px 5px;
+    border: 1px solid #fff;
+    color: #000;
+    background-color: #fff;
+    font-size: larger;
+}
+.firstNumber{
+    display: flex;
+    width: 250px;
+    flex-direction: column;
+    padding: 0px 0px 10px 0px;
+}
+.secondNumber{
+    display: flex;
+    width: 250px;
+    flex-direction: column;
+    padding: 0px 0px 10px 0px;
+}
+.values{
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    height: 30px;
+    margin: 0px 0px 7px 5px;
+    text-align: center;
+    font-size: larger;
+    border: 0.5px solid #fff;
+}
+.currency{
+    text-align: center;
+    margin: 0px 0px 0px 5px;
+    border: 0.5px solid #fff;
+    height: 30px;
+    font-size: larger;
+}
+.numbers{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
