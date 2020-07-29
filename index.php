@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,6 +12,25 @@
         <link rel="icon" type="image/png" sizes="16x16" href="image/favicon-16x16.png">
 
         <link rel="stylesheet" href="style.css">
+        <script type="text/javascript">
+            function update(int) {
+                var val1 = document.getElementById('currency1').value;
+                if(int.lenght === 0){
+                    document.getElementById("number2").value = "";
+                    return;
+                } else{
+                    var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange = function(){
+                        if(this.readyState === 4 && this.status === 200){
+                            document.getElementById("number2").value = this.responseText;
+                        }
+                    };
+                    xmlhttp.open("GET", "calculate.php?c=" + int, true);
+                    xmlhttp.send();
+                }
+
+            }
+        </script>
     </head>
     <body>
         <div class="header">
@@ -29,13 +50,12 @@
             }
             ?>
 
-            <form action='calculate.php' method='post'>
                 <div class="numbers">
                     <div class='firstNumber'>
                         <div class="numb">
-                            <input class="values" name='number1' type='number' onfocus="this.value = ''" step='0.01' value="<?php echo $_SESSION['number1']; ?>">
+                            <input class="values" name='number1' type='number' onkeyup="update(this.value)" step='0.01'>
                         </div>
-                        <select name='currency1' id='currency' class="currency">;
+                        <select name='currency1' id='currency1'  class="currency">
                             <?php
                             foreach ($xml->dailyrates->currency as $currency) {
                                 echo "<option";
@@ -55,9 +75,9 @@
 
                     <div class='secondNumber'>
                         <div class="numb">
-                            <input class="values" name='number2' id='number2' type='number' step='0.01' onfocus="this.value = ''" value="<?php echo $_SESSION['number2']; ?>">
+                            <input class="values" name='number2' id='number2' type='number' step='0.01'>
                         </div>
-                        <select name='currency2' id='currency2' class="currency">";
+                        <select name='currency2' id='currency2' class="currency">
                             <?php
                             foreach ($xml->dailyrates->currency as $currency) {
                                 echo "<option";
@@ -75,11 +95,6 @@
                         </select>
                     </div>
                 </div>
-                <div class='button'>
-                    <input id="butt" name='submit' type='submit' value='OMREGN'>
-                </div>
-
-            </form>
         </div>
     </body>
 </html>
