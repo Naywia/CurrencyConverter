@@ -11,7 +11,6 @@ body, html{
     justify-content: flex-end;
     height: 10%;
     background-color: #f08080; /*Light coral.. description: soft red..*/
-
 }
 .innerHeader{
     padding: 0px 10px 0px 0px;
@@ -20,7 +19,6 @@ body, html{
     display: flex;
     font-size: 75px;
     color: #fff;
-
 }
 
 .main{
@@ -40,27 +38,27 @@ body, html{
     height: 35px;
     margin: 0px 0px 0px 5px;
     border: 1px solid #fff;
-    color: #000;
+    color: #f08080;
     background-color: #fff;
     font-size: larger;
+    cursor: pointer;
 }
 .firstNumber{
     display: flex;
-    width: 250px;
+    width: 300px;
     flex-direction: column;
     padding: 0px 0px 10px 0px;
 }
 .secondNumber{
     display: flex;
-    width: 250px;
+    width: 300px;
     flex-direction: column;
     padding: 0px 0px 10px 0px;
 }
 .values{
-    -webkit-appearance: none;
-    -moz-appearance: textfield;
-    height: 30px;
-    margin: 0px 0px 7px 5px;
+    
+    height: 40px;
+    width: 290.5px;
     text-align: center;
     font-size: larger;
     border: 0.5px solid #fff;
@@ -69,7 +67,7 @@ body, html{
     text-align: center;
     margin: 0px 0px 0px 5px;
     border: 0.5px solid #fff;
-    height: 30px;
+    height: 40px;
     font-size: larger;
 }
 .numbers{
@@ -78,3 +76,37 @@ body, html{
     align-items: center;
     justify-content: center;
 }
+.numb{
+    border-bottom: 5px solid #f08080;
+    width: 294px;
+    margin: 0px 0px 7px 5px;
+}
+
+@media (max-width: 800px) {
+    .numbers{
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 600px) {
+    .head{
+        font-size: 40px;
+    }
+    .header{
+        height: 6%;
+    }
+    .main{
+    height: 94%;
+}
+}
+
+input::-webkit.outer-spin-button,
+input::-webkit.inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+    

@@ -4,11 +4,11 @@
     <head>
         <meta charset="UTF-8">
         <title>Valuta Omregner</title>
-        
+
         <link rel="apple-touch-icon" sizes="180x180" href="image/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="image/favicon-16x16.png">
-        
+
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
@@ -21,12 +21,20 @@
             <?php
             $url = "https://www.nationalbanken.dk/_vti_bin/DN/DataService.svc/CurrencyRatesXML?lang=da";
             $xml = simplexml_load_file($url);
+            if (empty($_SESSION['selected1'])) {
+                $_SESSION['selected1'] = "635,22";
+            }
+            if (empty($_SESSION['selected2'])) {
+                $_SESSION['selected2'] = 100;
+            }
             ?>
 
             <form action='calculate.php' method='post'>
                 <div class="numbers">
                     <div class='firstNumber'>
-                        <input class="values" name='number1' type='number' onfocus="this.value = ''" step='0.01' value="<?php echo $_SESSION['number1']; ?>">
+                        <div class="numb">
+                            <input class="values" name='number1' type='number' onfocus="this.value = ''" step='0.01' value="<?php echo $_SESSION['number1']; ?>">
+                        </div>
                         <select name='currency1' id='currency' class="currency">;
                             <?php
                             foreach ($xml->dailyrates->currency as $currency) {
@@ -46,7 +54,9 @@
                     </div>
 
                     <div class='secondNumber'>
-                        <input class="values" name='number2' id='number2' type='number' step='0.01' onfocus="this.value = ''" value="<?php echo $_SESSION['number2']; ?>">
+                        <div class="numb">
+                            <input class="values" name='number2' id='number2' type='number' step='0.01' onfocus="this.value = ''" value="<?php echo $_SESSION['number2']; ?>">
+                        </div>
                         <select name='currency2' id='currency2' class="currency">";
                             <?php
                             foreach ($xml->dailyrates->currency as $currency) {
