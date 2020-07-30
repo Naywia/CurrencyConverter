@@ -6,7 +6,6 @@ $one = filter_input(INPUT_GET, "one");
 $c = filter_input(INPUT_GET, "c");
 $val1 = filter_input(INPUT_GET, "val1");
 $val2 = filter_input(INPUT_GET, "val2");
-
 $_SESSION['selected1'] = $val1;
 $_SESSION['selected2'] = $val2;
 
@@ -30,5 +29,5 @@ if ($one == "true") {
     $result = bcdiv($number2, 1, 2);
 }
 
-echo $result == "" ? "no suggestions" : $result;
+echo $result;
 ?>

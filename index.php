@@ -12,43 +12,6 @@ session_start();
         <link rel="icon" type="image/png" sizes="16x16" href="image/favicon-16x16.png">
 
         <link rel="stylesheet" href="style.css">
-        <script type="text/javascript">
-            function update(int) {
-                var val1 = document.getElementById('currency1').value;
-                var val2 = document.getElementById('currency2').value;
-                if (int.lenght === 0) {
-                    document.getElementById("number2").value = "";
-                    return;
-                } else {
-                    var xmlhttp = new XMLHttpRequest();
-                    xmlhttp.onreadystatechange = function () {
-                        if (this.readyState === 4 && this.status === 200) {
-                            document.getElementById("number2").value = this.responseText;
-                        }
-                    };
-                    xmlhttp.open("GET", "calculate.php?c=" + int + "&val1=" + val1 + "&val2=" + val2 + "&one=true", true);
-                    xmlhttp.send();
-                }
-            }
-
-            function update2(int) {
-                var val1 = document.getElementById('currency1').value;
-                var val2 = document.getElementById('currency2').value;
-                if (int.lenght === 0) {
-                    document.getElementById("number1").value = "";
-                    return;
-                } else {
-                    var xmlhttp = new XMLHttpRequest();
-                    xmlhttp.onreadystatechange = function () {
-                        if (this.readyState === 4 && this.status === 200) {
-                            document.getElementById("number1").value = this.responseText;
-                        }
-                    };
-                    xmlhttp.open("GET", "calculate.php?c=" + int + "&val1=" + val1 + "&val2=" + val2 + "&one=false", true);
-                    xmlhttp.send();
-                }
-            }
-        </script>
     </head>
     <body>
         <div class="header">
@@ -68,6 +31,9 @@ session_start();
                 $_SESSION['selected2'] = 100;
             }
             ?>
+            
+            <input type="button" id="button">
+            
 
             <div class="numbers">
                 <div class='firstNumber'>
@@ -117,5 +83,48 @@ session_start();
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+            var val1 = document.getElementById('currency1').value;
+            var val2 = document.getElementById('currency2').value;
+            var num1 = document.getElementById('number1');
+            var num2 = document.getElementById('number2');
+
+            if (num1.value === "" && num2.value === "") {
+                num1.value = 100;
+                update(num1.value);
+            }
+
+            function update(int) {
+                if (int.lenght === 0) {
+                    document.getElementById("number2").value = "";
+                    return;
+                } else {
+                    var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange = function () {
+                        if (this.readyState === 4 && this.status === 200) {
+                            document.getElementById("number2").value = this.responseText;
+                        }
+                    };
+                    xmlhttp.open("GET", "calculate.php?c=" + int + "&val1=" + val1 + "&val2=" + val2 + "&one=true", true);
+                    xmlhttp.send();
+                }
+            }
+
+            function update2(int) {
+                if (int.lenght === 0) {
+                    document.getElementById("number1").value = "";
+                    return;
+                } else {
+                    var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange = function () {
+                        if (this.readyState === 4 && this.status === 200) {
+                            document.getElementById("number1").value = this.responseText;
+                        }
+                    };
+                    xmlhttp.open("GET", "calculate.php?c=" + int + "&val1=" + val1 + "&val2=" + val2 + "&one=false", true);
+                    xmlhttp.send();
+                }
+            }
+        </script>
     </body>
 </html>
