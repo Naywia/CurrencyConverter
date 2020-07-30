@@ -44,7 +44,7 @@ body, html{
 .values{
     
     height: 40px;
-    width: 290.5px;
+    width: 294px;
     text-align: center;
     font-size: larger;
     border: 0.5px solid #fff;
@@ -64,7 +64,7 @@ body, html{
 }
 .numb{
     border-bottom: 5px solid #f08080;
-    width: 294px;
+    width: 295px;
     margin: 0px 0px 7px 5px;
 }
 
